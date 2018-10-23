@@ -24,6 +24,8 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.google.guava:guava:16.0'
-    compile group: 'net.sourceforge.tess4j', name: 'tess4j', version: '4.2.3'
+    compile group: 'net.sourceforge.tess4j', name: 'tess4j', version: '4.0.0'
+    compile 'com.google.apis:google-api-services-translate:v2-rev51-1.25.0'
     testCompile 'junit:junit:4.12'
+
 }
