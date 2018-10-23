@@ -4,21 +4,32 @@ import net.sourceforge.tess4j.Tesseract
 import net.sourceforge.tess4j.TesseractException
 import java.io.File
 
-class MysteriousText {
+class MysteriousText(val imageLocation: String) {
 
-    private var imageLocation: String
+    private lateinit var imageScanned: String
+    private val FILEOUT: String = "./images/out_text.txt";
 
-    constructor(imageLocation: String) {
-        this.imageLocation = imageLocation
-    }
-
-    public fun getImgText(): String {
+    /**
+     * using sourceforge to extract text from image
+     */
+    public fun getImgText(){
         val instance = Tesseract()
         try {
-            return instance.doOCR(File(this.imageLocation))
+            imageScanned = instance.doOCR(File(imageLocation))
         } catch (e: TesseractException) {
             e.message
-            return "error parsing image"
+            imageScanned = "error parsing image"
+        }
+    }
+
+    /**
+     * save text to file
+     */
+    public fun saveImgText(){
+        File(FILEOUT).printWriter().use { out ->
+            this.imageScanned.forEach {
+                out.println("${it.toString()}")
+            }
         }
     }
 
