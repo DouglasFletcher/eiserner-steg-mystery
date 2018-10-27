@@ -1,31 +1,29 @@
 package main.utility
 
-import com.google.api.Http
-import org.apache.http.HttpRequest
-import org.apache.http.client.HttpClient
-import java.io.BufferedInputStream
-import java.io.InputStream
-import java.net.HttpURLConnection
-import java.net.URI
-import java.net.URL
-import java.net.URLConnection
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.Response
 
-class GoogleVisionApi(serviceDetails: ServiceDetails) {
+class GoogleVisionApi(content: String){
 
-    var serverUrl: URL
+    val content = content
 
-    init {
-        serverUrl = URL(serviceDetails.url() + serviceDetails.apikey())
+    /**
+     * google static params
+     */
+    companion object {
+        const val TARGET_URL = "https://vision.googleapis.com/v1/images:annotate?";
+        val API_KEY = "key=YOUR_API_KEY"
+        val ACCEPT_HEADER = ""
+        val CONTENT_TYPE = ""
     }
 
-    fun postRequest() {
-        val httpConnection = serverUrl.openConnection() as HttpURLConnection
-        httpConnection.requestMethod = "POST"
-        httpConnection.setRequestProperty("Content-Type", "application/json")
-        try {
-        } finally {
-            httpConnection.disconnect()
-        }
+
+    /**
+     * post request to google api
+     */
+    fun postRequest(): Response {
+        return Fuel.post(TARGET_URL)
+            .body(content).response().second
     }
 
 }

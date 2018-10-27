@@ -19,12 +19,14 @@ sourceSets {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.google.guava:guava:16.0'
     compile 'com.google.apis:google-api-services-translate:v2-rev51-1.25.0'
+    compile 'com.github.kittinunf.fuel:fuel:1.15.0'
     compile 'com.google.cloud:google-cloud-vision:1.48.0'
     testCompile 'junit:junit:4.12'
 }

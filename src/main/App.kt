@@ -1,12 +1,16 @@
 package main
 
-import main.utility.GoogleVisionWrapper
+import main.utility.GoogleVisionApi
 
 /**
  * lets (go) kotlin ...
  */
 fun main(args : Array<String>) {
-    val gvWrapper = GoogleVisionWrapper("images/20181024_010309.jpg")
-    //gvWrapper.detectText()
+
+    // post request
+    val gvApi = GoogleVisionApi
+    val response = gvApi.postRequest()
+    println(response)
+
 }
 
