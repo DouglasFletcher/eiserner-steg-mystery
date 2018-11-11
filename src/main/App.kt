@@ -1,16 +1,14 @@
 package main
 
-import main.utility.GoogleVisionApi
+import main.utility.TesseractWrapper
 
 /**
  * lets (go) kotlin ...
  */
 fun main(args : Array<String>) {
 
-    // post request
-    val gvApi = GoogleVisionApi
-    val response = gvApi.postRequest()
-    println(response)
+    val image = "images/20181111_010309_2.jpg"
 
+    val twrapper = TesseractWrapper(image)
+    twrapper.convertImage()
 }
-
