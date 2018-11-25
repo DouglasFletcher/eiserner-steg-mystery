@@ -1,7 +1,3 @@
-out
 .idea
-.gradle
-build
-local.properties
 *.iml
-lib/
+/target
